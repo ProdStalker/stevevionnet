@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Interface\DetailInterface;
 use App\Entity\Trait\DetailTrait;
 use App\Repository\JobRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
-class Job
+class Job implements DetailInterface
 {
     use DetailTrait;
 
