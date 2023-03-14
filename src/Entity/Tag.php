@@ -24,9 +24,13 @@ class Tag
     #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'tags')]
     private Collection $jobs;
 
+    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'tags')]
+    private Collection $projects;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,6 +84,33 @@ class Tag
     {
         if ($this->jobs->removeElement($job)) {
             $job->removeTag($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects->add($project);
+            $project->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeTag($this);
         }
 
         return $this;
