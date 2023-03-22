@@ -9,7 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 trait DetailTrait
 {
     #[ORM\Embedded(class: Detail::class, columnPrefix: false)]
-    private Detail $detail;
+    protected Detail $detail;
+
+    public function __construct(){
+        $this->detail = new Detail();
+    }
 
     public function getDetail(): Detail
     {

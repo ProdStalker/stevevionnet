@@ -1,6 +1,18 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.3] - 2023-03-14
+
+### Added
+- Create Project entity
+- Trait, interface and embeddable for detail content
+
+### Changed
+- Use trait and embeddable for Job entity's details
+
+### Fixed
+- Missing implements interface DetailInterface for Job and Project
+
 ## [0.0.2] - 2023-03-13
 
 ### Added

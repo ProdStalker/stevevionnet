@@ -1,0 +1,50 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Job{% endblock %}
+
+{% block body %}
+    <h1>Job</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ job.id }}</td>
+            </tr>
+            <tr>
+                <th>title</th>
+                <td>{{ job.detail.title }}</td>
+            </tr>
+            <tr>
+                <th>startAt</th>
+                <td>{{ job.detail.startAt ? job.detail.startAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>endAt</th>
+                <td>{{ job.detail.endAt ? job.detail.endAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>description</th>
+                <td>{{ job.detail.description }}</td>
+            </tr>
+            <tr>
+                <th>shortDescription</th>
+                <td>{{ job.detail.shortDescription }}</td>
+            </tr>
+            <tr>
+                <th>createdAt</th>
+                <td>{{ job.detail.createdAt ? job.detail.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>updatedAt</th>
+                <td>{{ job.detail.updatedAt ? job.detail.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_job_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_job_edit', {'id': job.id}) }}">edit</a>
+
+    {{ include('job/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+
+{% block body %}
+    <h1>Project index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>title</th>
+                <th>startAt</th>
+                <th>endAt</th>
+                <th>description</th>
+                <th>shortDescription</th>
+                <th>createdAt</th>
+                <th>updatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td>{{ project.id }}</td>
+                <td>{{ project.detail.title }}</td>
+                <td>{{ project.detail.startAt ? project.detail.startAt|date('Y-m-d') : '' }}</td>
+                <td>{{ project.detail.endAt ? project.detail.endAt|date('Y-m-d') : '' }}</td>
+                <td>{{ project.detail.description }}</td>
+                <td>{{ project.detail.shortDescription }}</td>
+                <td>{{ project.detail.createdAt ? project.detail.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.detail.updatedAt ? project.detail.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_project_show', {'id': project.id}) }}">show</a>
+                    <a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_project_new') }}">Create new</a>
+{% endblock %}

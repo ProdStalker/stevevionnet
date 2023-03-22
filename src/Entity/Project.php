@@ -14,6 +14,10 @@ class Project implements DetailInterface
 {
     use DetailTrait;
 
+    use DetailTrait {
+        DetailTrait::__construct as private __detailConstruct;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,7 +28,9 @@ class Project implements DetailInterface
 
     public function __construct()
     {
+        $this->__detailConstruct();
         $this->tags = new ArrayCollection();
+        $this->detail->setCreatedAt(new \DateTime());
     }
 
     public function getId(): ?int
