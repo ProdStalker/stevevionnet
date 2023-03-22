@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap');
 
 html {
   padding: 0;
@@ -9,6 +10,10 @@ html {
 }
 
 body {
+
+  font-family: 'Work Sans', sans-serif;
+  color: #FFFFFF;
+
   &.front {
     background: linear-gradient(180deg, #010208 16.39%, #010206 20.51%, #040008 24.79%, #010101 30.46%, #010101 34.11%, #010101 36.21%, #010101 100%);
   }
