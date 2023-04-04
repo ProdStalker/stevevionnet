@@ -7,14 +7,10 @@
         <div id="who-i-am" class="row">
             <div class="col-12 col-md-9">
                 <h1 class="weight-300">I’m a developer in
-                    <span class="dynamic-word white-text weight-600" {{ stimulus_controller('symfony/ux-typed', {
-                        strings: [
-                            'PHP', 'Javascript', 'Flutter', 'HTML', 'CSS',
-                            'Python', 'JAVA', 'C#', 'C', 'C++',
-                            'Android', 'React', 'Angular', 'Node.js'
-                        ],
-                        loop: true
-                    }) }}></span>
+                    {{ component('typed', {
+                        style: 'dynamic-word white-text weight-600',
+                        categoryName: 'Programming'
+                    }) }}
                 </h1>
             </div>
             <div class="col-12 col-md-3">
