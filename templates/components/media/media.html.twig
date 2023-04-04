@@ -1,5 +1,15 @@
 <figure class="media"{{ attributes }}>
-    <img src="{{ computed.preview }}" alt="{{ media.name }}" />
+    {% if computed.isImage %}
+        <img src="{{ computed.preview }}" alt="{{ media.name }}" />
+    {% elseif computed.isVideo %}
+        Video
+    {% elseif computed.isPdf %}
+        <object data="{{ computed.preview }}" type="application/pdf">alt : <a href="{{ computed.preview }}">{{ media.name }}</a></object>
+    {% else %}
+        {{ media.mimeType }} not supported yet
+    {% endif %}
 
     <figcaption>{{ media.name }}</figcaption>
 </figure>
+
+

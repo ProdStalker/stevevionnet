@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Media;
 use App\Form\MediaType;
+use App\MediaUtil;
 use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/media', name: 'admin_media_')]
 class AdminMediaController extends AbstractController
 {
-    public function __construct() {
+    public function __construct(private readonly MediaUtil $mediaUtil) {
 
     }
 
@@ -40,8 +41,11 @@ class AdminMediaController extends AbstractController
             $imageSize = getimagesize($uploadedFile->getRealPath());
 
             $media->setSize($uploadedFile->getSize())
-                ->setMimeType($uploadedFile->getMimeType())
-                ->setDimensions($imageSize[0].'x'.$imageSize[1]);
+                ->setMimeType($uploadedFile->getMimeType());
+
+            if ($this->mediaUtil->isImage($media)) {
+                $media->setDimensions($imageSize[0].'x'.$imageSize[1]);
+            }
 
             $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
