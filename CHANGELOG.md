@@ -1,6 +1,22 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.4] - 2023-04-04
+
+### Added
+- Add typed words on homepage
+- Media entity
+- Client entity
+- Medias in job, project
+- Slugs
+
+### Changed
+- Rename name => path in media
+
+### Fixed
+- Updated_at in detail
+
+
 ## [0.0.3] - 2023-04-04
 
 ### Added
