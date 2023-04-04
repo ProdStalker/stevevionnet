@@ -53,6 +53,7 @@ class Media
     {
         $this->jobs = new ArrayCollection();
         $this->projects = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
