@@ -3,7 +3,113 @@
 {% block title %}Vionnet Steve{% endblock %}
 
 {% block body %}
-    <div id="who-i-am" class="row">
-        I’m a developer in blablab and <span class="dynamic-word">Interaction Design</span>
+    <div class="container">
+        <div id="who-i-am" class="row">
+            <h1 class="weight-300">I’m a developer in blablab and <span class="dynamic-word white-text weight-600">Interaction Design</span></h1>
+        </div>
+
+        <div id="client-working-for" class="row">
+            <h2 class="weight-300">Some of<span class="white-text  weight-600"> the clients I have work for</span></h2>
+        </div>
+
+        <div id="latest-works">
+            <h2 class="title">Latest<span class="white-text weight-600"> Works</span></h2>
+
+            <div class="works-container">
+                <div class="row work">
+                    <div class="col-12 col-md-6 image">
+                        <img src="{{ asset("build/images/1.png") }}" alt="1" />
+                    </div>
+                    <div class="col-12 col-md-6 content">
+                        <h5 class="title weight-600">Real estate Template</h5>
+                        <p class="short-description weight-300">Lorem ipsum dolor sit amet, consectetur <span class="white-text weight-600">adipiscing elit. Ultrices lorem non feugiat egestas amet.</span></p>
+                        <div class="tags weight-300">
+                            <span class="tag">Website Design</span>
+                        </div>
+                        <div class="show-more">
+                            View Work
+                            <svg class="icon">
+                                <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="row work">
+                    <div class="col-12 col-md-6 content">
+                        <h5 class="title weight-600">Logo animation</h5>
+                        <p class="short-description weight-300">Lorem ipsum dolor sit amet, consectetur <span class="white-text weight-600">adipiscing elit. Ultrices lorem non feugiat egestas amet.</span></p>
+                        <div class="tags weight-300">
+                            <span class="tag">Animation</span>
+                        </div>
+                        <div class="show-more">
+                            View Work
+                            <svg class="icon">
+                                <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 image">
+                        <img src="{{ asset("build/images/2.png") }}" alt="2" />
+                    </div>
+                </div>
+                <div class="row work">
+                    <div class="col-12 col-md-6 image">
+                        <img src="{{ asset("build/images/3.png") }}" alt="3" />
+                    </div>
+                    <div class="col-12 col-md-6 content">
+                        <h5 class="title weight-600">Smart home app</h5>
+                        <p class="short-description weight-300">Lorem ipsum dolor sit amet, consectetur <span class="white-text weight-600">adipiscing elit. Ultrices lorem non feugiat egestas amet.</span></p>
+                        <div class="tags weight-300">
+                            <span class="tag">Mobile App</span>
+                        </div>
+                        <div class="show-more">
+                            View Work
+                            <svg class="icon">
+                                <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="row work">
+                    <div class="col-12 col-md-6 content">
+                        <h5 class="title weight-600">Logo animation</h5>
+                        <p class="short-description weight-300">Lorem ipsum dolor sit amet, consectetur <span class="white-text weight-600">adipiscing elit. Ultrices lorem non feugiat egestas amet.</span></p>
+                        <div class="tags weight-300">
+                            <span class="tag">Animation</span>
+                        </div>
+                        <div class="show-more">
+                            View Work
+                            <svg class="icon">
+                                <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 image">
+                        <img src="{{ asset("build/images/4.png") }}" alt="4" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row about">
+            <div class="col-12 col-md-6 content">
+                <h5 class="title weight-600">A bit about me</h5>
+                <p class="short-description weight-300">I am a Developer who is passionate about creating <span class="white-text weight-600"> Laurie and joyful digital experiences. Besides web, I love music, games and travelling.</span></p>
+            </div>
+
+            <div class="col-12 col-md-6 columns">
+                <div class="column">
+                    <img src="{{ asset("build/images/multiple-1.png") }}" alt="multiple 1" class="img-fluid"/>
+                </div>
+                <div class="column">
+                    <div class="rows">
+                        <img class="custom-row img-fluid" src="{{ asset("build/images/multiple-2.png") }}" alt="multiple 2" />
+                        <img class="custom-row img-fluid" src="{{ asset("build/images/multiple-3.png") }}" alt="multiple 3" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
