@@ -3,8 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\MediaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
@@ -14,8 +18,12 @@ class Media
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 150, unique: true)]
+    #[Gedmo\Slug(fields: ['name'])]
+    private string $slug;
+
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $path = null;
 
     #[ORM\Column]
     private ?float $size = null;
@@ -29,19 +37,34 @@ class Media
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'medias')]
+    private Collection $jobs;
+
+    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'medias')]
+    private Collection $projects;
+
+    #[ORM\Column(length: 100)]
+    private ?string $name = null;
+
+    public function __construct()
+    {
+        $this->jobs = new ArrayCollection();
+        $this->projects = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getPath(): ?string
     {
-        return $this->name;
+        return $this->path;
     }
 
-    public function setName(string $name): self
+    public function setPath(string $path): self
     {
-        $this->name = $name;
+        $this->path = $path;
 
         return $this;
     }
@@ -92,5 +115,76 @@ class Media
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Job>
+     */
+    public function getJobs(): Collection
+    {
+        return $this->jobs;
+    }
+
+    public function addJob(Job $job): self
+    {
+        if (!$this->jobs->contains($job)) {
+            $this->jobs->add($job);
+            $job->addMedia($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJob(Job $job): self
+    {
+        if ($this->jobs->removeElement($job)) {
+            $job->removeMedia($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects->add($project);
+            $project->addMedia($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeMedia($this);
+        }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

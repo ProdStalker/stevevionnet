@@ -26,11 +26,15 @@ class Project implements DetailInterface
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'projects')]
     private Collection $tags;
 
+    #[ORM\ManyToMany(targetEntity: Media::class, inversedBy: 'projects')]
+    private Collection $medias;
+
     public function __construct()
     {
         $this->__detailConstruct();
         $this->tags = new ArrayCollection();
         $this->detail->setCreatedAt(new \DateTime());
+        $this->medias = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,6 +62,30 @@ class Project implements DetailInterface
     public function removeTag(Tag $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Media>
+     */
+    public function getMedias(): Collection
+    {
+        return $this->medias;
+    }
+
+    public function addMedia(Media $media): self
+    {
+        if (!$this->medias->contains($media)) {
+            $this->medias->add($media);
+        }
+
+        return $this;
+    }
+
+    public function removeMedia(Media $media): self
+    {
+        $this->medias->removeElement($media);
 
         return $this;
     }
