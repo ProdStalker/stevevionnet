@@ -1,0 +1,38 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Word index{% endblock %}
+
+{% block body %}
+    <h1>Word index</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for word in words %}
+                    <tr>
+                        <td>{{ word.name }}</td>
+                        <td>
+                            <ul>
+                                {% for category in word.categories %}
+                                    <li>{{ category.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_word_edit', {id: word.id}) }}">Editer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('admin_word_new') }}">Create new</a>
+{% endblock %}
