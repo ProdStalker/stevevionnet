@@ -46,6 +46,9 @@ class Media
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
+    #[ORM\OneToOne(mappedBy: 'logo', cascade: ['persist', 'remove'])]
+    private ?Client $client = null;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -186,5 +189,27 @@ class Media
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($client === null && $this->client !== null) {
+            $this->client->setLogo(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($client !== null && $client->getLogo() !== $this) {
+            $client->setLogo($this);
+        }
+
+        $this->client = $client;
+
+        return $this;
     }
 }
