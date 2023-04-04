@@ -1,6 +1,23 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.5] - 2023-04-04
+
+### Added
+- Ignore docs folder
+- Ignore public/uploads folder
+- Add profile picture on homepage
+- Add default value for createdAt field
+- Add media admin index and new with dropzone
+
+### Changed
+- Add margin top to the body
+- Change media size property type to int
+- Rename field media type to mimetype
+
+### Fixed
+- H2 font size
+
 ## [0.0.4] - 2023-04-04
 
 ### Added
