@@ -1,0 +1,26 @@
+.media {
+  margin: 5px;
+  border: 5px solid #FFFFFF;
+  width: 100px;
+  border-radius: 5px;
+
+  img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  object {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 12px;
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 2px 5px;
+  }
+}
