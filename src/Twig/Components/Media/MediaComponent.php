@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Twig\Components;
+namespace App\Twig\Components\Media;
 
 use App\Entity\Media;
 use App\MediaUtil;

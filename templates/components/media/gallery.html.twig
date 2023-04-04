@@ -1,0 +1,10 @@
+<div class="medias-container">
+    {% for media in computed.medias %}
+        {{ component(
+            'media',
+            {
+                media: media
+            }
+        ) }}
+    {% endfor %}
+</div>

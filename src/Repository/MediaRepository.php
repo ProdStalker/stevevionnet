@@ -39,28 +39,17 @@ class MediaRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Media[] Returns an array of Media objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('i.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Media
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function mediasFiltered(array $filters = [])
+    {
+        $qb = $this->createQueryBuilder('m');
+
+        if (!empty($filters)) {
+            $qb = $qb->where('m.mimeType IN (:filters)')
+                ->setParameter('filters', $filters);
+        }
+
+        return $qb->getQuery()
+            ->getResult();
+    }
 }

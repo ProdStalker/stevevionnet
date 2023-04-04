@@ -20,10 +20,9 @@ class AdminMediaController extends AbstractController
     }
 
     #[Route('/', name: 'index', methods: ['GET'])]
-    public function index(MediaRepository $mediaRepository): Response
+    public function index(): Response
     {
         return $this->render('admin/media/index.html.twig', [
-            'medias' => $mediaRepository->findAll(),
         ]);
     }
 
@@ -38,29 +37,32 @@ class AdminMediaController extends AbstractController
             /** @var UploadedFile $uploadedFile */
             $uploadedFile = $form['path']->getData();
 
-            $imageSize = getimagesize($uploadedFile->getRealPath());
+            if ($this->mediaUtil->isSupported($uploadedFile->getMimeType())) {
+                $media->setSize($uploadedFile->getSize())
+                    ->setMimeType($uploadedFile->getMimeType());
 
-            $media->setSize($uploadedFile->getSize())
-                ->setMimeType($uploadedFile->getMimeType());
+                if ($this->mediaUtil->isImage($media)) {
+                    $imageSize = getimagesize($uploadedFile->getRealPath());
+                    $media->setDimensions($imageSize[0] . 'x' . $imageSize[1]);
+                }
 
-            if ($this->mediaUtil->isImage($media)) {
-                $media->setDimensions($imageSize[0].'x'.$imageSize[1]);
+                $destination = $this->getParameter('kernel.project_dir') . '/public/uploads';
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = base64_encode($originalFilename) . '-' . uniqid() . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move(
+                    $destination,
+                    $newFilename
+                );
+
+                $media->setPath($newFilename);
+
+                $mediaRepository->save($media, true);
+
+                return $this->redirectToRoute('admin_media_index', [], Response::HTTP_SEE_OTHER);
             }
-
-            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
-            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $newFilename = base64_encode($originalFilename).'-'.uniqid().'.'.$uploadedFile->getClientOriginalExtension();
-            $uploadedFile->move(
-                $destination,
-                $newFilename
-            );
-
-
-            $media->setPath($newFilename);
-
-            $mediaRepository->save($media, true);
-
-            return $this->redirectToRoute('admin_media_index', [], Response::HTTP_SEE_OTHER);
+            else {
+                $this->addFlash('error', 'The mime type '.$uploadedFile->getMimeType().' is not supported');
+            }
         }
 
         return $this->render('admin/media/new.html.twig', [

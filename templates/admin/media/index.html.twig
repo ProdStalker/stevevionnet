@@ -5,17 +5,7 @@
 {% block body %}
     <h1>Media index</h1>
 
-    <div class="medias-container">
-        {% for media in medias %}
-            {{ component(
-                'media',
-                {
-                    media: media
-                }
-            ) }}
-        {% endfor %}
-    </div>
-
+    {{ component('gallery') }}
 
     <a href="{{ path('admin_media_new') }}">Create new</a>
 {% endblock %}
