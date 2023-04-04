@@ -11,7 +11,6 @@ final class MediaComponent
     public Media $media;
 
     public function preview(): string{
-        dump($this->media->getMimeType());
         $path = sprintf('/uploads/%s', $this->media->getPath());
 
         return $path;
