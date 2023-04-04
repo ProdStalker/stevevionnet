@@ -31,8 +31,8 @@ class Media
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $dimensions = null;
 
-    #[ORM\Column(length: 20)]
-    private ?string $type = null;
+    #[ORM\Column(length: 50)]
+    private ?string $mimeType = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
@@ -97,14 +97,14 @@ class Media
         return $this;
     }
 
-    public function getType(): ?string
+    public function getMimeType(): ?string
     {
-        return $this->type;
+        return $this->mimeType;
     }
 
-    public function setType(string $type): self
+    public function setMimeType(string $mimeType): self
     {
-        $this->type = $type;
+        $this->mimeType = $mimeType;
 
         return $this;
     }
