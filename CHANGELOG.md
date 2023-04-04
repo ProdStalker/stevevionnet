@@ -1,6 +1,19 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.7] - 2023-04-04
+
+### Added
+- Word management
+- Word category management
+- Messages flashed in admin
+
+### Changed
+- Typed element in homepage become component
+
+### Fixed
+- Fix svg missing
+
 ## [0.0.6] - 2023-04-04
 
 ### Added
