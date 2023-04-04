@@ -26,7 +26,7 @@ class Media
     private ?string $path = null;
 
     #[ORM\Column]
-    private ?float $size = null;
+    private ?int $size = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $dimensions = null;
@@ -72,12 +72,12 @@ class Media
         return $this;
     }
 
-    public function getSize(): ?float
+    public function getSize(): ?int
     {
         return $this->size;
     }
 
-    public function setSize(float $size): self
+    public function setSize(int $size): self
     {
         $this->size = $size;
 
