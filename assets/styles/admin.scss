@@ -17,6 +17,9 @@ body {
 }
 
 .medias-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-template-rows: auto;
+  grid-auto-rows: 100px;
+  grid-gap: 5px;
 }
