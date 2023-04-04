@@ -1,11 +1,12 @@
 # Change log
 All notable changes to this project is writing here
 
-## [0.0.3] - 2023-03-14
+## [0.0.3] - 2023-04-04
 
 ### Added
 - Create Project entity
 - Trait, interface and embeddable for detail content
+- Homepage structure and design
 
 ### Changed
 - Use trait and embeddable for Job entity's details
