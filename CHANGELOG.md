@@ -1,6 +1,18 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.6] - 2023-04-04
+
+### Added
+- Handle different mime type
+
+### Changed
+- Use grid instead of flex for medias
+- Media component css is independant
+
+### Fixed
+- Remove dump
+
 ## [0.0.5] - 2023-04-04
 
 ### Added
