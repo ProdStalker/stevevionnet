@@ -5,7 +5,17 @@
 {% block body %}
     <div class="container">
         <div id="who-i-am" class="row">
-            <h1 class="weight-300">I’m a developer in blablab and <span class="dynamic-word white-text weight-600">Interaction Design</span></h1>
+            <h1 class="weight-300">I’m a developer in
+                <span class="dynamic-word white-text weight-600" {{ stimulus_controller('symfony/ux-typed', {
+                    strings: [
+                        'PHP', 'Javascript', 'Flutter', 'HTML', 'CSS',
+                        'Python', 'JAVA', 'C#', 'C', 'C++',
+                        'Android', 'React', 'Angular', 'Node.js'
+                    ],
+                    loop: true,
+                    showC
+                }) }}></span>
+            </h1>
         </div>
 
         <div id="client-working-for" class="row">

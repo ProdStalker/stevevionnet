@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26396c918f4529387a273a7bbd494e74",
+    "content-hash": "f6c398cb60f37c3a28e1297173265825",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -6967,6 +6967,68 @@
                 }
             ],
             "time": "2023-01-19T15:55:42+00:00"
+        },
+        {
+            "name": "symfony/ux-typed",
+            "version": "v2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ux-typed.git",
+                "reference": "6b51ab8c02ca39ecff1416ff8f875aed1f551bad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ux-typed/zipball/6b51ab8c02ca39ecff1416ff8f875aed1f551bad",
+                "reference": "6b51ab8c02ca39ecff1416ff8f875aed1f551bad",
+                "shasum": ""
+            },
+            "conflict": {
+                "symfony/flex": "<1.13"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/ux",
+                    "url": "https://github.com/symfony/ux"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "email": "contact@spomky-labs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Typed integration for Symfony",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "symfony-ux"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/ux-typed/tree/v2.7.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-01-24T15:40:19+00:00"
         },
         {
             "name": "symfony/validator",

@@ -1028,6 +1028,9 @@
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
+"@symfony/ux-typed@file:vendor/symfony/ux-typed/assets":
+  version "1.0.0"
+
 "@symfony/webpack-encore@^4.0.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-4.2.0.tgz#1eec87e3fca9a410563511eb557f70461c10cce5"
@@ -4087,6 +4090,11 @@ type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+typed.js@^2.0:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/typed.js/-/typed.js-2.0.15.tgz#1405b0dde97008d6f87264bcd9406f72a72ea31b"
+  integrity sha512-kQNtvm6+dEcUc5sdskEgV17rsdvimQNsDRHnp8PasBY85dYqVoo4TCanakSkfherMN+lZEko5ccMMKJpuR42Fw==
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
