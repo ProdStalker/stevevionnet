@@ -5,16 +5,21 @@
 {% block body %}
     <div class="container">
         <div id="who-i-am" class="row">
-            <h1 class="weight-300">I’m a developer in
-                <span class="dynamic-word white-text weight-600" {{ stimulus_controller('symfony/ux-typed', {
-                    strings: [
-                        'PHP', 'Javascript', 'Flutter', 'HTML', 'CSS',
-                        'Python', 'JAVA', 'C#', 'C', 'C++',
-                        'Android', 'React', 'Angular', 'Node.js'
-                    ],
-                    loop: true
-                }) }}></span>
-            </h1>
+            <div class="col-12 col-md-9">
+                <h1 class="weight-300">I’m a developer in
+                    <span class="dynamic-word white-text weight-600" {{ stimulus_controller('symfony/ux-typed', {
+                        strings: [
+                            'PHP', 'Javascript', 'Flutter', 'HTML', 'CSS',
+                            'Python', 'JAVA', 'C#', 'C', 'C++',
+                            'Android', 'React', 'Angular', 'Node.js'
+                        ],
+                        loop: true
+                    }) }}></span>
+                </h1>
+            </div>
+            <div class="col-12 col-md-3">
+                <img id="me-avatar" src="{{ asset("build/images/me.jpg") }}" alt="Steve Vionnet picture" />
+            </div>
         </div>
 
         <div id="client-working-for" class="row">
