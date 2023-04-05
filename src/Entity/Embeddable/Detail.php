@@ -10,12 +10,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 #[ORM\Embeddable]
 class Detail
 {
-    /**
-     * Hook timestampable behavior
-     * updates createdAt, updatedAt fields
-     */
-    use TimestampableEntity;
-
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 

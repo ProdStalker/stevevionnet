@@ -28,8 +28,8 @@
                 <td>{{ job.detail.endAt ? job.detail.endAt|date('Y-m-d') : '' }}</td>
                 <td>{{ job.detail.description }}</td>
                 <td>{{ job.detail.shortDescription }}</td>
-                <td>{{ job.detail.createdAt ? job.detail.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ job.detail.updatedAt ? job.detail.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ job.createdAt ? job.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ job.updatedAt ? job.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('admin_job_show', {'id': job.id}) }}">show</a>
                     <a href="{{ path('admin_job_edit', {'id': job.id}) }}">edit</a>

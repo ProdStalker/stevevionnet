@@ -28,8 +28,8 @@
                 <td>{{ project.detail.endAt ? project.detail.endAt|date('Y-m-d') : '' }}</td>
                 <td>{{ project.detail.description }}</td>
                 <td>{{ project.detail.shortDescription }}</td>
-                <td>{{ project.detail.createdAt ? project.detail.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ project.detail.updatedAt ? project.detail.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('admin_project_show', {'id': project.id}) }}">show</a>
                     <a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>

@@ -8,10 +8,16 @@ use App\Repository\JobRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 class Job implements DetailInterface
 {
+    /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
     use DetailTrait;
 
     use DetailTrait {
@@ -33,7 +39,8 @@ class Job implements DetailInterface
     {
         $this->__detailConstruct();
         $this->tags = new ArrayCollection();
-        $this->detail->setCreatedAt(new \DateTime());
+        //$this->detail->setCreatedAt(new \DateTime());
+
         $this->medias = new ArrayCollection();
     }
 
