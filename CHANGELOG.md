@@ -1,6 +1,19 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.8] - 2023-04-05
+
+### Added
+- Add navbar in admin
+- Add, edit, new tag
+- Add autocomplete tag field for project and job
+
+### Fixed
+- Fix migration failed when start a new project
+- Fix missing migration for project_media
+- Fix timestampable doesn't work with embeddable
+- Fix missing import bootstrap js
+
 ## [0.0.7] - 2023-04-04
 
 ### Added
