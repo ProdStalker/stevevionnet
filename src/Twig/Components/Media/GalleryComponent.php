@@ -18,11 +18,16 @@ final class GalleryComponent
         MediaType::Video
     ];
 
+    public array $mediasList = [];
+
     public function __construct(private readonly MediaUtil $mediaUtil){
 
     }
 
     public function medias(): Collection|array{
+        if (!empty($this->mediasList)) {
+            return $this->mediasList;
+        }
         return $this->mediaUtil->mediasFiltered($this->filters);
     }
 }
