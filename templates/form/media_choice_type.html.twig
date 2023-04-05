@@ -1,0 +1,21 @@
+{% block media_choice_row %}
+    {% set mediasField = form.children['medias'] %}
+    {% set mediasChoices = [] %}
+    {% for choice in mediasField.vars.choices %}
+        {% set mediasChoices = mediasChoices|merge([choice.data]) %}
+    {% endfor %}
+
+    {{ component('gallery', {
+        mediasList: mediasChoices
+    }) }}
+    {% for child in form.children|filter(child => not child.rendered) %}
+        {{ dump('coucou') }}
+        <div class="form-group">
+            {{ dump(child.children) }}
+            {{ form_label(child) }}
+            {{ form_widget(child) }}
+            {{ form_help(child) }}
+            {{ form_errors(child) }}
+        </div>
+    {% endfor %}
+{% endblock %}
