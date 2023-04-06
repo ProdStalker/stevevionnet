@@ -28,8 +28,6 @@ final class MediaComponent
     }
 
     public function preview(): string{
-        $path = sprintf('/uploads/%s', $this->media->getPath());
-
-        return $path;
+        return $this->mediaUtil->mediaUrl($this->media);
     }
 }

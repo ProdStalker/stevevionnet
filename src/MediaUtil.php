@@ -49,6 +49,10 @@ class MediaUtil
         return $this->mediaRepository->mediasFiltered($finalFilters);
     }
 
+    public function mediaUrl(Media $media): string {
+        return sprintf('/uploads/%s', $media->getPath());
+    }
+
     public function mimeTypeForMediaType(MediaType $mediaType): array
     {
         $mimes = [];
