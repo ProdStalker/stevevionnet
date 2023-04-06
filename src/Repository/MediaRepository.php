@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Media;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -42,6 +43,12 @@ class MediaRepository extends ServiceEntityRepository
 
     public function mediasFiltered(array $filters = [])
     {
+        return $this->mediasFilteredQB($filters)->getQuery()
+            ->getResult();
+    }
+
+    public function mediasFilteredQB(array $filters = []): QueryBuilder
+    {
         $qb = $this->createQueryBuilder('m');
 
         if (!empty($filters)) {
@@ -49,7 +56,6 @@ class MediaRepository extends ServiceEntityRepository
                 ->setParameter('filters', $filters);
         }
 
-        return $qb->getQuery()
-            ->getResult();
+        return $qb;
     }
 }

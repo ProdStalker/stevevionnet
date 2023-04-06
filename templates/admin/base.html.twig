@@ -23,13 +23,16 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('admin_media_index') }}">Medias</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ path('admin_project_index') }}">Projects</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ path('admin_job_index') }}">Work</a>
                         </li>
 
-                        <li class="nav-item dropstart">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Words
                             </a>
@@ -37,6 +40,9 @@
                                 <li><a class="dropdown-item" href="{{ path('admin_word_category_index') }}">Categories</a></li>
                                 <li><a class="dropdown-item" href="{{ path('admin_word_index') }}">Words</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('admin_client_index') }}">Clients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ path('admin_tag_index') }}">Tags</a>
