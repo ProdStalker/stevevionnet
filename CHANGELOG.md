@@ -1,6 +1,17 @@
 # Change log
 All notable changes to this project is writing here
 
+## [0.0.9] - 2023-04-06
+
+### Added
+- Can accept custom medias list in gallery component
+- Client crud
+- Twig extension to get media url
+- Prepare a custom field to choose a media from the gallery
+
+### Changed
+- Refactor code to get only 1 place to get media url
+
 ## [0.0.8] - 2023-04-05
 
 ### Added
