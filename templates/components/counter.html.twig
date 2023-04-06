@@ -1,0 +1,7 @@
+<div class="counter"{{ attributes }}>
+    <h2 class="title">{{ computed.title }}</h2>
+    <p class="number">{{ computed.count }}</p>
+    {% if computed.url is not null and computed.url is not empty and computed.url is not same as('#') %}
+        <a href="{{ computed.url }}" class="btn btn-primary">GO</a>
+    {% endif %}
+</div>
