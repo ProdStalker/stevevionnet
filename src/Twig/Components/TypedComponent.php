@@ -18,6 +18,7 @@ final class TypedComponent
     public bool $loop = true;
     public string $style = '';
     public ?string $categoryName = null;
+    public int $backDelay = 1000;
 
 
     public function __construct(private readonly WordRepository $wordRepository){
