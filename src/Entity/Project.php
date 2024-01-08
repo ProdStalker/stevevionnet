@@ -29,7 +29,7 @@ class Project implements DetailInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'projects')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'projects', fetch: "EAGER")]
     private Collection $tags;
 
     #[ORM\ManyToMany(targetEntity: Media::class, inversedBy: 'projects')]
@@ -94,6 +94,18 @@ class Project implements DetailInterface
     public function removeMedia(Media $media): self
     {
         $this->medias->removeElement($media);
+
+        return $this;
+    }
+
+    public function getCover(): ?Media
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?Media $cover): self
+    {
+        $this->cover = $cover;
 
         return $this;
     }
