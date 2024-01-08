@@ -17,7 +17,7 @@ class ProjectUtil extends EntityUtil
     {
         return $this->cache->get('homepage-projects', function (CacheItemInterface $item) {
             $item->expiresAfter(30);
-            return $this->getRepository()->findAll();
+            return $this->getRepository()->findHomepageProjects();
         });
     }
 }

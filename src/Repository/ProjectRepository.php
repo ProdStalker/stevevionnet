@@ -63,4 +63,12 @@ class ProjectRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findHomepageProjects(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.onHomepage = :onHomepage')
+                ->setParameter('onHomepage', true)
+            ->getQuery()
+            ->getResult();
+    }
 }

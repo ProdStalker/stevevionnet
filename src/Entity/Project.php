@@ -38,6 +38,9 @@ class Project implements DetailInterface
     #[ORM\OneToOne(inversedBy: 'project', cascade: ['persist', 'remove'], fetch: "EAGER")]
     private ?Media $cover = null;
 
+    #[ORM\Column]
+    private ?bool $onHomepage = null;
+
     public function __construct()
     {
         $this->__detailConstruct();
@@ -106,6 +109,18 @@ class Project implements DetailInterface
     public function setCover(?Media $cover): self
     {
         $this->cover = $cover;
+
+        return $this;
+    }
+
+    public function isOnHomepage(): ?bool
+    {
+        return $this->onHomepage;
+    }
+
+    public function setOnHomepage(bool $onHomepage): self
+    {
+        $this->onHomepage = $onHomepage;
 
         return $this;
     }

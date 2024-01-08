@@ -26,27 +26,28 @@
             <h2 class="title">Latest<span class="white-text weight-600"> Works</span></h2>
 
             <div class="works-container">
-                <div class="row work">
-                    {% set project = projects[0] %}
-                    <div class="col-12 col-md-6 image">
-                        <img src="{{ mediaUrl(project.cover) }}" alt="1" />
-                    </div>
-                    <div class="col-12 col-md-6 content">
-                        <h5 class="title weight-600">{{ project.detail.title }}</h5>
-                        {{ doubleColorText(project.detail.shortDescription)|raw }}
-                        <div class="tags weight-300">
-                            {% for tag in project.tags %}
-                                <span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span>
-                            {% endfor %}
+                {% for project in projects %}
+                    <div class="row work">
+                        <div class="col-12 col-md-6 image">
+                            <img src="{{ mediaUrl(project.cover) }}" alt="1" />
                         </div>
-                        <div class="show-more">
-                            View Work
-                            <svg class="icon">
-                                <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
-                            </svg>
+                        <div class="col-12 col-md-6 content">
+                            <h5 class="title weight-600">{{ project.detail.title }}</h5>
+                            {{ doubleColorText(project.detail.shortDescription)|raw }}
+                            <div class="tags weight-300">
+                                {% for tag in project.tags %}
+                                    <span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="show-more">
+                                View Work
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
                 <div class="row work">
                     <div class="col-12 col-md-6 image">
                         <img src="{{ asset("build/images/1.png") }}" alt="1" />
