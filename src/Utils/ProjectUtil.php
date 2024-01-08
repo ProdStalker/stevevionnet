@@ -20,4 +20,14 @@ class ProjectUtil extends EntityUtil
             return $this->getRepository()->findHomepageProjects();
         });
     }
+
+
+
+    public function projectsByTag(string $tagName): array
+    {
+        return $this->cache->get('projects-tag-'.$tagName, function (CacheItemInterface $item) use ($tagName) {
+            $item->expiresAfter(30);
+            return $this->getRepository()->findProjectsByTag($tagName);
+        });
+    }
 }

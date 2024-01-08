@@ -38,7 +38,7 @@
                             {{ doubleColorText(project.detail.shortDescription)|raw }}
                             <div class="tags weight-300">
                                 {% for tag in project.tags %}
-                                    <span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span>
+                                <a href="{{ path('tag', {slug: tag.slug}) }}"><span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span></a>
                                 {% endfor %}
                             </div>
                             <div class="show-more">

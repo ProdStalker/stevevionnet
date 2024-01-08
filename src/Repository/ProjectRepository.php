@@ -71,4 +71,14 @@ class ProjectRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findProjectsByTag(string $tagName): array
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.tags', 't')
+            ->where('t.slug = :tagName')
+            ->setParameter('tagName', $tagName)
+            ->getQuery()
+            ->getResult();
+    }
 }
