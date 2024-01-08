@@ -17,7 +17,7 @@ final class TypedComponent
     public array $wordsList = [];
     public bool $loop = true;
     public string $style = '';
-    public ?string $categoryName = null;
+    public array $categoriesName = [];
     public int $backDelay = 1000;
 
 
@@ -30,13 +30,15 @@ final class TypedComponent
             return $this->wordsList;
         }
 
-        $wordsData = $this->categoryName == null ? $this->wordRepository->findAll() : $this->wordRepository->findByCategory($this->categoryName);
+        $wordsData = empty($this->categoriesName) ? $this->wordRepository->findAll() : $this->wordRepository->findByCategories($this->categoriesName);
 
         $words = [];
 
         foreach($wordsData as $word){
             $words[] = $word->getName();
         }
+
+        shuffle($words);
 
         return $words;
     }

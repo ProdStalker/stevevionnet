@@ -19,7 +19,7 @@ class DefaultController extends AbstractController
         $projects = $projectUtil->homepageProjects();
 
         return $this->render('default/index.html.twig', [
-            'categoryName' => 'Programming',
+            'categoriesName' => ['Programming'],
             'projects' => $projects
         ]);
     }

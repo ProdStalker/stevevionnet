@@ -48,4 +48,14 @@ class WordRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByCategories(array $categoriesName)
+    {
+        return $this->createQueryBuilder('w')
+            ->innerJoin('w.categories','wc')
+            ->where('wc.name IN (:categoriesName)')
+            ->setParameter('categoriesName', $categoriesName)
+            ->getQuery()
+            ->getResult();
+    }
 }
