@@ -10,6 +10,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 final class MediaComponent
 {
     public Media $media;
+    public bool $canEdit = false;
 
     public function __construct(private readonly MediaUtil $mediaUtil){
 

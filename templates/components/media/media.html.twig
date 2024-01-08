@@ -1,15 +1,17 @@
-<figure class="media"{{ attributes }}>
-    {% if computed.isImage %}
-        <img src="{{ computed.preview }}" alt="{{ media.name }}" />
-    {% elseif computed.isVideo %}
-        Video
-    {% elseif computed.isPdf %}
-        <object data="{{ computed.preview }}" type="application/pdf">alt : <a href="{{ computed.preview }}">{{ media.name }}</a></object>
-    {% else %}
-        {{ media.mimeType }} not supported yet
-    {% endif %}
+<a href="{{ computed.canEdit ? path('admin_media_edit', {id: media.id}) : '#' }}">
+    <figure class="media"{{ attributes }}>
+        {% if computed.isImage %}
+            <img src="{{ computed.preview }}" alt="{{ media.name }}" />
+        {% elseif computed.isVideo %}
+            Video
+        {% elseif computed.isPdf %}
+            <object data="{{ computed.preview }}" type="application/pdf">alt : <a href="{{ computed.preview }}">{{ media.name }}</a></object>
+        {% else %}
+            {{ media.mimeType }} not supported yet
+        {% endif %}
 
-    <figcaption>{{ media.name }}</figcaption>
-</figure>
+        <figcaption>{{ media.name }}</figcaption>
+    </figure>
+</a>
 
 

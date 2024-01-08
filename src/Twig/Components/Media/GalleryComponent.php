@@ -19,6 +19,7 @@ final class GalleryComponent
     ];
 
     public array $mediasList = [];
+    public bool $canEdit = false;
 
     public function __construct(private readonly MediaUtil $mediaUtil){
 

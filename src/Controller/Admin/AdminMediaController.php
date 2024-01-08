@@ -2,9 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Job;
 use App\Entity\Media;
+use App\Form\JobType;
 use App\Form\MediaType;
 use App\MediaUtil;
+use App\Repository\JobRepository;
 use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -69,5 +72,33 @@ class AdminMediaController extends AbstractController
             'media' => $media,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Media $media, MediaRepository $mediaRepository): Response
+    {
+        $form = $this->createForm(MediaType::class, $media);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $mediaRepository->save($media, true);
+
+            return $this->redirectToRoute('admin_media_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('admin/media/edit.html.twig', [
+            'media' => $media,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request, Media $media, MediaRepository $mediaRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$media->getId(), $request->request->get('_token'))) {
+            $mediaRepository->remove($media, true);
+        }
+
+        return $this->redirectToRoute('admin_media_index', [], Response::HTTP_SEE_OTHER);
     }
 }

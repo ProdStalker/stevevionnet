@@ -52,6 +52,12 @@ class Media
     #[ORM\OneToOne(mappedBy: 'cover', cascade: ['persist', 'remove'])]
     private ?Project $project = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $shortDescription = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -235,6 +241,30 @@ class Media
         }
 
         $this->project = $project;
+
+        return $this;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(?string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

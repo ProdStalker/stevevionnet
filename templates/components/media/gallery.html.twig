@@ -3,7 +3,8 @@
         {{ component(
             'media',
             {
-                media: media
+                media: media,
+                canEdit: computed.canEdit
             }
         ) }}
     {% endfor %}
