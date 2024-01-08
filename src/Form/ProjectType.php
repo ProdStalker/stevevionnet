@@ -15,6 +15,7 @@ class ProjectType extends AbstractType
             ->add('detail', DetailType::class,[
             ])
             ->add('tags', AutocompleteTagType::class)
+            ->add('medias', AutocompleteMediaType::class)
         ;
     }
 
