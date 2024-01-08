@@ -49,6 +49,9 @@ class Media
     #[ORM\OneToOne(mappedBy: 'logo', cascade: ['persist', 'remove'])]
     private ?Client $client = null;
 
+    #[ORM\OneToOne(mappedBy: 'cover', cascade: ['persist', 'remove'])]
+    private ?Project $project = null;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -210,6 +213,28 @@ class Media
         }
 
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($project === null && $this->project !== null) {
+            $this->project->setCover(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($project !== null && $project->getCover() !== $this) {
+            $project->setCover($this);
+        }
+
+        $this->project = $project;
 
         return $this;
     }

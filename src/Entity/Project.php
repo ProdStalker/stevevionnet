@@ -35,6 +35,9 @@ class Project implements DetailInterface
     #[ORM\ManyToMany(targetEntity: Media::class, inversedBy: 'projects')]
     private Collection $medias;
 
+    #[ORM\OneToOne(inversedBy: 'project', cascade: ['persist', 'remove'], fetch: "EAGER")]
+    private ?Media $cover = null;
+
     public function __construct()
     {
         $this->__detailConstruct();
