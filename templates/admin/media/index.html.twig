@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Media index</h1>
 
-    {{ component('gallery') }}
+    {{ component('gallery', {canEdit: true}) }}
 
-    <a href="{{ path('admin_media_new') }}">Create new</a>
+    <a href="{{ path('admin_media_new') }}" class="btn btn-primary">Create new</a>
 {% endblock %}
