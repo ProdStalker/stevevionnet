@@ -28,8 +28,10 @@
             <div class="works-container">
                 {% for project in projects %}
                     <div class="row work">
-                        <div class="col-12 col-md-6 image">
-                            <img src="{{ mediaUrl(project.cover) }}" alt="1" />
+                        <div class="col-12 col-md-6">
+                            <div class="image">
+                                <img src="{{ mediaUrl(project.cover) }}" alt="1" />
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 content">
                             <h5 class="title weight-600">{{ project.detail.title }}</h5>
