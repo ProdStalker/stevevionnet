@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ project.detail.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="title weight-600 text-center">{{ doubleColorText(project.detail.title)|raw }}</h1>
+        <div class="works-container">
+            {% for media in project.medias %}
+                {% if loop.index0 % 2 == 0 %}
+                    <div class="row work">
+                        <div class="col-12 col-md-6">
+                            <div class="image">
+                                <img src="{{ mediaUrl(media) }}" alt="1" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 content">
+                            {% if media.description is not null or media.description is not empty %}
+                                {{ doubleColorText(media.description)|raw }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row work">
+                        <div class="col-12 col-md-6 content">
+                            {% if media.description is not null or media.description is not empty %}
+                                {{ doubleColorText(media.description)|raw }}
+                            {% endif %}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="image">
+                                <img src="{{ mediaUrl(media) }}" alt="1" />
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
