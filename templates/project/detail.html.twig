@@ -5,6 +5,11 @@
 {% block body %}
     <div class="container">
         <h1 class="title weight-600 text-center">{{ doubleColorText(project.detail.title)|raw }}</h1>
+        <div class="d-flex justify-content-center tags weight-300">
+            {% for tag in project.tags %}
+                <a href="{{ path('tag', {slug: tag.slug}) }}"><span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span></a>
+            {% endfor %}
+        </div>
         <div class="works-container">
             {% for media in project.medias %}
                 {% if loop.index0 % 2 == 0 %}
