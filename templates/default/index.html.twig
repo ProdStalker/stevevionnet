@@ -19,11 +19,11 @@
         </div>
 
         <div id="client-working-for" class="row">
-            <h2 class="weight-300">Some of<span class="white-text  weight-600"> the clients I have work for</span></h2>
+            <h2 class="weight-300">Some of<span class="white-text  weight-600"> the projects that I've done</span></h2>
         </div>
 
         <div id="latest-works">
-            <h2 class="title">Latest<span class="white-text weight-600"> Works</span></h2>
+            <h2 class="title">Latest<span class="white-text weight-600"> Projects</span></h2>
 
             <div class="works-container">
                 {% for project in projects %}
@@ -130,7 +130,8 @@
         <div class="row about">
             <div class="col-12 col-md-6 content">
                 <h5 class="title weight-600">A bit about me</h5>
-                <p class="short-description weight-300">I am a Developer who is passionate about creating <span class="white-text weight-600"> Laurie and joyful digital experiences. Besides web, I love music, games and travelling.</span></p>
+                {{ doubleColorText('I am a Developer who is passionate about creating my projects designs with Laurie help and joyful digital experiences. Besides web, I love music, games and travelling.')|raw }}
+                {#  <p class="short-description weight-300">I am a Developer who is passionate about creating <span class="white-text weight-600"> Laurie's designs and joyful digital experiences. Besides web, I love music, games and travelling.</span></p> #}
             </div>
 
             <div class="col-12 col-md-6 columns">
