@@ -21,12 +21,17 @@
         </thead>
         <tbody>
         {% for project in projects %}
+            {% set maxDescriptionLength = 200 %}
+            {% set cuttedDescription = project.detail.description %}
+            {% if cuttedDescription is not null and cuttedDescription|length > maxDescriptionLength %}
+                {% set cuttedDescription = cuttedDescription|u.truncate(maxDescriptionLength) ~ '...' %}
+            {% endif %}
             <tr>
                 <td>{{ project.id }}</td>
                 <td>{{ project.detail.title }}</td>
                 <td>{{ project.detail.startAt ? project.detail.startAt|date('Y-m-d') : '' }}</td>
                 <td>{{ project.detail.endAt ? project.detail.endAt|date('Y-m-d') : '' }}</td>
-                <td>{{ project.detail.description }}</td>
+                <td>{{ cuttedDescription }}</td>
                 <td>{{ project.detail.shortDescription }}</td>
                 <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
