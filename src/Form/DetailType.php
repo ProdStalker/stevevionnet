@@ -16,10 +16,16 @@ class DetailType extends AbstractType
     {
         $builder
             ->add('startAt', DateType::class, [
-                'required' => true
+                'required' => true,
+                'years' => range(1990, date('Y')),
+                'months' => range(date('m'), 12),
+                'days' => range(date('d'), 31),
             ])
             ->add('endAt', DateType::class, [
-                'required' => false
+                'required' => false,
+                'years' => range(1990, date('Y')),
+                'months' => range(date('m'), 12),
+                'days' => range(date('d'), 31),
             ])
             ->add('title', TextType::class, [
                 'required' => true
