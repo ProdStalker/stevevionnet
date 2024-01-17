@@ -30,4 +30,12 @@ class ProjectUtil extends EntityUtil
             return $this->getRepository()->findProjectsByTag($tagName);
         });
     }
+
+    public function projectBySlug(string $slug): ?Project
+    {
+        return $this->cache->get('project-'.$slug, function (CacheItemInterface $item) use ($slug) {
+            $item->expiresAfter(30);
+            return $this->getRepository()->findProjectBySlug($slug);
+        });
+    }
 }

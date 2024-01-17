@@ -81,4 +81,13 @@ class ProjectRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findProjectBySlug(string $slug): ?Project
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.detail.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
