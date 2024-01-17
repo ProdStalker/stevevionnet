@@ -28,26 +28,49 @@
             <div class="works-container">
                 {% for project in projects %}
                     <div class="row work">
-                        <div class="col-12 col-md-6">
-                            <div class="image">
-                                <img src="{{ mediaUrl(project.cover) }}" alt="1" />
+                        {% if loop.index0 % 2 == 0 %}
+                            <div class="col-12 col-md-6">
+                                <div class="image">
+                                    <img src="{{ mediaUrl(project.cover) }}" alt="1" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 content">
-                            <h5 class="title weight-600">{{ project.detail.title }}</h5>
-                            {{ doubleColorText(project.detail.shortDescription)|raw }}
-                            <div class="tags weight-300">
-                                {% for tag in project.tags %}
-                                <a href="{{ path('tag', {slug: tag.slug}) }}"><span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span></a>
-                                {% endfor %}
+                            <div class="col-12 col-md-6 content">
+                                <h5 class="title weight-600">{{ project.detail.title }}</h5>
+                                {{ doubleColorText(project.detail.shortDescription)|raw }}
+                                <div class="tags weight-300">
+                                    {% for tag in project.tags %}
+                                    <a href="{{ path('tag', {slug: tag.slug}) }}"><span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span></a>
+                                    {% endfor %}
+                                </div>
+                                <div class="show-more">
+                                    <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work</a>
+                                    <svg class="icon">
+                                        <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="show-more">
-                                <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work</a>
-                                <svg class="icon">
-                                    <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
-                                </svg>
+                        {% else %}
+                            <div class="col-12 col-md-6 content">
+                                <h5 class="title weight-600">{{ project.detail.title }}</h5>
+                                {{ doubleColorText(project.detail.shortDescription)|raw }}
+                                <div class="tags weight-300">
+                                    {% for tag in project.tags %}
+                                        <a href="{{ path('tag', {slug: tag.slug}) }}"><span class="tag" style="color: {{ tag.color }};">{{ tag.name }}</span>{{ not loop.last ? '<span class="tag">&#9679;</span>' : ''}}</span></a>
+                                    {% endfor %}
+                                </div>
+                                <div class="show-more">
+                                    <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work</a>
+                                    <svg class="icon">
+                                        <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                                    </svg>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-12 col-md-6">
+                                <div class="image">
+                                    <img src="{{ mediaUrl(project.cover) }}" alt="1" />
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
                 <div class="row work">
