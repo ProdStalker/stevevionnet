@@ -22,10 +22,11 @@
                                 {% endfor %}
                             </div>
                             <div class="show-more">
-                                View Work
-                                <svg class="icon">
-                                    <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
-                                </svg>
+                                <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work
+                                    <svg class="icon">
+                                        <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     {% else %}
@@ -38,10 +39,11 @@
                                 {% endfor %}
                             </div>
                             <div class="show-more">
-                                View Work
-                                <svg class="icon">
-                                    <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
-                                </svg>
+                                <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work
+                                    <svg class="icon">
+                                        <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
 

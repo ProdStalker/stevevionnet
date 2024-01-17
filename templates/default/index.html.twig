@@ -43,10 +43,11 @@
                                     {% endfor %}
                                 </div>
                                 <div class="show-more">
-                                    <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work</a>
-                                    <svg class="icon">
-                                        <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
-                                    </svg>
+                                    <a href="{{ path('project_detail', {slug: project.detail.slug}) }}">View Work
+                                        <svg class="icon">
+                                            <use xlink:href="{{ asset("build/images/sprite.svg#chevron-right") }}"></use>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         {% else %}
