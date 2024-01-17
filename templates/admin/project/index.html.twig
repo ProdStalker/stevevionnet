@@ -36,8 +36,8 @@
                 <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('admin_project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
+                    <a class="btn btn-secondary" href="{{ path('admin_project_show', {'id': project.id}) }}">show</a>
+                    <a class="btn btn-primary"  href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
