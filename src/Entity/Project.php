@@ -32,7 +32,7 @@ class Project implements DetailInterface
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'projects', fetch: "EAGER")]
     private Collection $tags;
 
-    #[ORM\ManyToMany(targetEntity: Media::class, inversedBy: 'projects')]
+    #[ORM\ManyToMany(targetEntity: Media::class, inversedBy: 'projects', fetch: "EAGER")]
     private Collection $medias;
 
     #[ORM\OneToOne(inversedBy: 'project', cascade: ['persist', 'remove'], fetch: "EAGER")]
