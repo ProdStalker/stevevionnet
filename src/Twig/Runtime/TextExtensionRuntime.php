@@ -18,14 +18,23 @@ class TextExtensionRuntime implements RuntimeExtensionInterface
         $words = explode(' ', $text);
         $content = '<p class="short-description weight-300">';
 
-        $half = floor(count($words)/2);
+        $half = 0;
+        if (count($words) > 1) {
+            $half = (int) (count($words)/2);
+            $half = strpos($text, $words[$half]);
+        }
+        else {
+            $half = strlen($text)/2;
+        }
+
+        $half = (int) $half;
         for ($i = 0; $i < $half; $i++) {
-            $content .= $words[$i].' ';
+            $content .= $text[$i];
         }
 
         $content .= '<span class="white-text weight-600">';
-        for ($i = $half; $i < count($words); $i++) {
-            $content .= $words[$i].' ';
+        for ($i = $half; $i < strlen($text); $i++) {
+            $content .= $text[$i];
         }
 
         $content .= '</span></p>';
